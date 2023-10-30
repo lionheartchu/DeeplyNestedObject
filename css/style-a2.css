@@ -1,0 +1,45 @@
+body{
+    font-family:'Caudex';
+    margin:1%;
+    font-size:1.3vw;
+    padding:1.5%;
+    border: 0.2vw double;
+    background:ghostwhite;
+}
+.bg{
+   height:50vw;
+}
+.title{
+    width:10vw;
+}
+.date{
+    opacity:0;
+    transition:opacity 1.5s;
+}
+.title:hover + .date{
+    opacity:1;
+} 
+.container{
+    text-align: center;
+    margin-top:-50%;
+    margin-left:50%;
+    
+}
+.disc{
+    margin-top:5%;
+}
+.line{
+    position:absolute;
+    height:0.05vw;
+    margin-top:-1.2%;
+    width:7vw;
+    margin-left:20%;
+    background-color:black;
+}
+a{
+    margin-left: 93%;
+    transition:color 1s;
+}
+a:hover{
+    color:rgb(182,111,41);
+}
