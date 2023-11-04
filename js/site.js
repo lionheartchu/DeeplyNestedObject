@@ -32,6 +32,7 @@ let bandHistory = {
     AnetteEra: [2006,2007,2008,2009,2010,2011,2012],
     currentRange: '2013-current',
     current: [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],
+    hint:'Input any year to check the era of the band.'
 }
 
 function whichLeadVocal(yearInput){
@@ -68,7 +69,7 @@ let Discography = {
     publishCheck: function (publishYear) {
         for (let i = 0; i < this.years.length; i++) {
             if (publishYear === this.years[i]) {
-                console.log("This year the album " + this.names[i] + " was published.");
+                console.log("This year the album " + this.names[i] + " was published.")
                 return;
             }
         }
@@ -140,7 +141,7 @@ let Discography = {
         }
     }
 }
-Discography.publishCheck(1998); //can be changed
+Discography.publishCheck(1998) //can be changed
 
 
 //displaying contents?
@@ -157,10 +158,10 @@ symbol.setAttribute("src","https://i.postimg.cc/YST1Tjpc/symbol.png")
 const logo = document.querySelector('.logo')
 logo.setAttribute("src","https://i.postimg.cc/J0jBmhLk/Nightwish-Logo.png")
 //logo hover to show img
-logo.addEventListener('mouseover', () => {
+logo.addEventListener('mouseover',() =>{
     symbol.style.opacity =0.8
 })
-logo.addEventListener('mouseout', () => {
+logo.addEventListener('mouseout',() =>{
     symbol.style.opacity =0.3
 })
 
@@ -173,13 +174,22 @@ const genreList = basicInfo.Genre.join(", ")
 genreElement.textContent = `Genres: ${genreList}`
 
 //current members
-document.querySelector('.members-logo').setAttribute("src","https://i.postimg.cc/nhcjyTKb/fontbolt.png")
+const membLogo=document.querySelector('.members-logo')
+membLogo.setAttribute("src","https://i.postimg.cc/nhcjyTKb/fontbolt.png")
 document.querySelector('.member1').innerHTML="Lead vocal: "+bandMember.leadVocals
 document.querySelector('.member2').innerHTML="Keyboard: "+bandMember.keyboard
 document.querySelector('.member3').innerHTML="Guitar: "+bandMember.guitar
 document.querySelector('.member4').innerHTML="Drums: "+bandMember.drums
 document.querySelector('.member5').innerHTML="Bass: "+bandMember.bass
 document.querySelector('.member6').innerHTML="Multiple Instrumentalist: "+bandMember.multiInstrument
+
+membLogo.addEventListener('mouseover',()=>{
+    membLogo.style.width='12%'
+    membLogo.style.marginLeft='10%'
+    membLogo.style.marginTop='0%'
+    document.querySelector('.member-container').style.opacity='1'
+})
+
 
 //band history using creating p tag method
 // function displayHistory() {
@@ -203,14 +213,46 @@ document.querySelector('.member6').innerHTML="Multiple Instrumentalist: "+bandMe
 // }
 // displayHistory()
 
-document.querySelector('.history-logo').setAttribute("src","https://i.postimg.cc/vTcNBCVR/fontbolt-1.png")
+const histLogo=document.querySelector('.history-logo')
+histLogo.setAttribute("src","https://i.postimg.cc/vTcNBCVR/fontbolt-1.png")
+histLogo.addEventListener('mouseover',()=>{
+    histLogo.style.width='11%'
+    histLogo.style.marginLeft='0%'
+    histLogo.style.marginTop='-8%'
+    document.querySelector('.history-container').style.visibility='visible'
+    document.querySelector('.history-container').style.opacity='1'
+    document.getElementById('input-wrapper').style.opacity='1'
+})
 
 //button for checking the history
 const input =document.getElementById('year-input')
 const checkButton =document.querySelector('.btnCheck')
+const histHint=document.querySelector('.hint')
+
+document.querySelector(".history-container").addEventListener('mouseover',()=>{
+    histHint.style.opacity='1'
+    histHint.innerHTML=bandHistory.hint
+    const userInput = parseInt(input.value);
+
+    console.log('Mouse over history container. User input: ' + userInput);
+
+    if (!userInput) {
+        // Show default content when there's no user input
+        histHint.innerHTML = bandHistory.hint
+    } else if (userInput >= bandHistory.formation && userInput <= bandHistory.TarjaEra[bandHistory.TarjaEra.length - 1]) {
+        histHint.innerHTML = 'In the year of '+ userInput+', the lead vocal was ' +pastMember.leadVocals[0]
+    } else if (userInput>bandHistory.TarjaEra[bandHistory.TarjaEra.length - 1]&& userInput<=bandHistory.AnetteEra[bandHistory.AnetteEra.length - 1]) {
+
+    }
+})
+document.querySelector(".history-container").addEventListener('mouseout',()=>{
+    histHint.style.opacity='0'
+    // histHint.innerHTML = ''
+})
+
 checkButton.addEventListener('click',()=>{
     const userInput= parseInt(input.value)
-
+    histHint.innerHTML = ''
     //if statements based on year
     if (userInput>= bandHistory.formation && userInput<=bandHistory.TarjaEra[bandHistory.TarjaEra.length-1]){
         //input between 1996-2005
@@ -231,29 +273,36 @@ checkButton.addEventListener('click',()=>{
         document.getElementById('current-era').style.opacity='100%'
         document.getElementById('current-era').style.color="goldenrod"
     }else {
-        window.alert('No records found for the year you input;;')
+        window.alert('No records found for the year you input;; Try some closer years!')
     }
     input.value = ""
 }
 )
 
+
+
 //discorgraphy...try to use for loop(how to use for each again??
-document.querySelector('.discography-logo').setAttribute("src","https://i.postimg.cc/1zr16x7b/fontbolt-2.png")
+const discoLogo=document.querySelector('.discography-logo')
+discoLogo.setAttribute("src","https://i.postimg.cc/1zr16x7b/fontbolt-2.png")
+discoLogo.addEventListener('mouseover',()=>{
+    discoLogo.style.width='15%'
+    discoLogo.style.marginTop='-33%'
+    document.querySelector('.discography-container').style.opacity='1'
+})
+
 function displayDiscography() {
     const discographyContainer = document.querySelector('.discography-container')
     for (let i=0;i<Discography.names.length; i++){
         const albumName = Discography.names[i]
         const albumYear = Discography.years[i]
 
-        const albumLink = document.createElement('a');
-        albumLink.textContent = albumName + ' (' + albumYear + ')';
-        // Set the href attribute to point to the album's page within the "pages" folder
-        albumLink.href = 'pages/album-' + i + '.html';
-        // Create a line break for better formatting
-        const lineBreak = document.createElement('br');
-        // Append the link and line break to the discographyContainer
-        discographyContainer.appendChild(albumLink);
-        discographyContainer.appendChild(lineBreak);
+        const albumLink = document.createElement('a')
+        albumLink.textContent = albumName + ' (' + albumYear + ')'
+        albumLink.href = 'pages/album-' + i + '.html'
+        const lineBreak = document.createElement('br')
+        
+        discographyContainer.appendChild(albumLink)
+        discographyContainer.appendChild(lineBreak)
         // const albumElement = document.createElement('p')
         // albumElement.textContent= albumName+'('+albumYear+')'
         // discographyContainer.appendChild(albumElement)
@@ -261,3 +310,9 @@ function displayDiscography() {
 }
 //how to create a class for each of the albumElement
 displayDiscography();
+
+//hide and display logo
+const logoElement=document.querySelector('.logo')
+setTimeout(()=>{
+    logoElement.style.opacity='1'
+},2000)

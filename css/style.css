@@ -40,6 +40,8 @@ body{
     margin-top:30%;
     width:45%;
     margin-left: 27%;
+    opacity:0;
+    transition:opacity 2.5s ease-in-out;
 }
 
 .member-container{
@@ -47,31 +49,44 @@ body{
     border: 0.1vw solid;
     padding:1%;
     margin-left:3%;
+    opacity:0%;
+    transition: opacity 1.5s 1s;
 }
 .members-logo{
-    width:12%;
-    margin-left:10%;
-    margin-bottom:0.5%;
+    position:absolute;
+    width:22%;
+    margin-left:15%;
+    margin-top:12.5%;
+    transition:margin-left 1.2s ease-in-out,margin-top 1.2s ease-in-out, width 1.2s ease-in-out;
 }
 
 .history-logo{
-    margin-top:-20%;
-    width:11%;
-    margin-bottom:5%;
+    margin-top:-2%;
+    width:18%;
+    margin-left:4%;
+    position:absolute;
+    transition: margin-top 1.2s ease-in-out,margin-left 1.2s ease-in-out, width 1.2s ease-in-out;
 }
 .history-container{
     width:25%;
     border: 0.1vw solid;
     padding:1%;
-    margin-top:-5.3%;
+    margin-top:-4%;
+    visibility: hidden;
+    opacity:0;
+    transition:opacity 1.5s 1s;
 }
-
+.hint{
+    transition: opacity 1.5s;
+    margin-top:-1%;
+}
 .discography-logo{
     position:absolute;
-    margin-top:-33%;
+    margin-top:-20%;
     margin-left:65%;
-    width:15%;
+    width:25%;
     margin-bottom:5%;
+    transition: margin-top 1.2s ease-in-out, width 1.2s ease-in-out;
 }
 .discography-container{
     width:25%;
@@ -81,14 +96,17 @@ body{
     margin-left:63%;
     text-align: center;
     margin-bottom:16%;
+    opacity:0;
+    transition:opacity 1.5s 1s;
 }
 .discography-container a{
     line-height:2.5;
-    
 }
 #input-wrapper{
     margin-top:-15%;
     margin-bottom:11%;
+    opacity:0;
+    transition:opacity 1s 2s;
 }
 #year-input{
     height:1.5vw;
