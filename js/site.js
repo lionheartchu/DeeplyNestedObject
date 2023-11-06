@@ -315,4 +315,17 @@ displayDiscography();
 const logoElement=document.querySelector('.logo')
 setTimeout(()=>{
     logoElement.style.opacity='1'
+    infoElement.style.opacity='1'
+    infoElement.style.transition='opacity 1s'
+    infoLogo.style.opacity='1'
+    infoLogo.style.transition='opacity 1s'
 },2000)
+
+//display basic info
+const infoElement=document.querySelector('.info-container')
+const infoLogo=document.querySelector('.info-logo')
+setTimeout(()=>{
+    histLogo.style.opacity='1'
+    discoLogo.style.opacity='1'
+    membLogo.style.opacity='1'
+},3000)

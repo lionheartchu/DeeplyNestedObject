@@ -15,9 +15,11 @@ body{
     border: 0.1vw solid;
     padding:1%;
     height:30%;
+    opacity:0;
 }
 .info-logo{
     width:20%;
+    opacity:0;
 }
 #symbol{
     position: absolute;
@@ -57,7 +59,8 @@ body{
     width:22%;
     margin-left:15%;
     margin-top:12.5%;
-    transition:margin-left 1.2s ease-in-out,margin-top 1.2s ease-in-out, width 1.2s ease-in-out;
+    opacity:0;
+    transition:margin-left 1.2s ease-in-out,margin-top 1.2s ease-in-out, width 1.2s ease-in-out,opacity 1s;
 }
 
 .history-logo{
@@ -65,7 +68,8 @@ body{
     width:18%;
     margin-left:4%;
     position:absolute;
-    transition: margin-top 1.2s ease-in-out,margin-left 1.2s ease-in-out, width 1.2s ease-in-out;
+    opacity:0;
+    transition: margin-top 1.2s ease-in-out,margin-left 1.2s ease-in-out, width 1.2s ease-in-out,opacity 1s;
 }
 .history-container{
     width:25%;
@@ -86,7 +90,8 @@ body{
     margin-left:65%;
     width:25%;
     margin-bottom:5%;
-    transition: margin-top 1.2s ease-in-out, width 1.2s ease-in-out;
+    opacity:0;
+    transition: margin-top 1.2s ease-in-out, width 1.2s ease-in-out,opacity 1s;
 }
 .discography-container{
     width:25%;
